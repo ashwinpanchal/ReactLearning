@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [todo, setTodo] = useState([
@@ -27,30 +27,33 @@ function App() {
     },
   ]);
 
-  setTimeout(() => {
-    setTodo([
-      {
-        title: "joekr 0",
-        id: 1,
-        description: "des4",
-      },
-      {
-        title: "joker 1",
-        id: 2,
-        description: "hfasdf",
-      },
-      {
-        title: "joker 2",
-        id: 3,
-        description: "helloasfasdfas 3",
-      },
-      {
-        title: "joker 3",
-        id: 4,
-        description: "hfasfsadello",
-      },
-    ]);
-  }, 5000);
+  useEffect(() => {
+    console.log("Inside Use Effect");
+    setInterval(() => {
+      setTodo([
+        {
+          title: "joekr 0",
+          id: Math.floor(Math.random() * 100),
+          description: "des4",
+        },
+        {
+          title: "joker 1",
+          id: Math.floor(Math.random() * 100),
+          description: "hfasdf",
+        },
+        {
+          title: "joker 2",
+          id: Math.floor(Math.random() * 100),
+          description: "helloasfasdfas 3",
+        },
+        {
+          title: "joker 3",
+          id: Math.floor(Math.random() * 100),
+          description: "hfasfsadello",
+        },
+      ]);
+    }, 1000);
+  }, []);
 
   return (
     <>
